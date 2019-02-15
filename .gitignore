@@ -1,0 +1,9 @@
+# Qt creator junk
+*.user
+
+# Eclipse junk
+.project
+.cproject
+
+# anything build related
+*build*
