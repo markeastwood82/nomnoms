@@ -5,5 +5,8 @@
 .project
 .cproject
 
+# Visual Studio junk
+*.vs
+
 # anything build related
 *build*

@@ -1,1 +1,3 @@
-# I know that this file is required, but I have no clue what is supposed to go in here!
+foreach(component ${noms_FIND_COMPONENT})
+    include(${CMAKE_CURRENT_LIST_DIR}/${component}-config.cmake)
+endforeach()

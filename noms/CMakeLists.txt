@@ -6,3 +6,23 @@ project(${project})
 
 add_subdirectory(fruit)
 add_subdirectory(veg)
+
+# UPDATE: implement advice from Tsyvarev
+
+configure_file(${project}-config.cmake
+  "${CMAKE_BINARY_DIR}/${project}-config.cmake"
+  @ONLY
+)
+
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file(
+  "${CMAKE_BINARY_DIR}/${project}-config-version.cmake"
+  VERSION ${version}
+  COMPATIBILITY AnyNewerVersion
+)
+
+install(
+  FILES
+    "${CMAKE_BINARY_DIR}/${project}-config.cmake"
+  DESTINATION lib/cmake/${project}
+)
