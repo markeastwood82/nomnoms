@@ -17,7 +17,7 @@ install(TARGETS ${component} EXPORT ${component}-targets
 )
 
 install(EXPORT ${component}-targets
-  FILE "${component}-targets.cmake"
+  FILE "${project}-${component}-targets.cmake"
   NAMESPACE ${project}::
   DESTINATION lib/cmake/${project}
 )

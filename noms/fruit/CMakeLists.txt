@@ -2,6 +2,9 @@ set(component fruit)
 
 add_library(${component} SHARED src/apple.cpp)
 
+# namespaced alias
+add_library(${project}::${component} ALIAS ${component})
+
 target_include_directories(${component}
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -17,7 +20,7 @@ install(TARGETS ${component} EXPORT ${component}-targets
 )
 
 install(EXPORT ${component}-targets
-  FILE "${component}-targets.cmake"
+  FILE "${project}-${component}-targets.cmake"
   NAMESPACE ${project}::
   DESTINATION lib/cmake/${project}
 )
