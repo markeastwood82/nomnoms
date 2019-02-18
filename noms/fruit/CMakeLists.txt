@@ -56,7 +56,6 @@ install(
   COMPONENT ${component}
 )
 
-# DESTINATION will be automatically prefixed by ${CMAKE_INSTALL_PREFIX}
 install(
   DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include
   COMPONENT ${component}
