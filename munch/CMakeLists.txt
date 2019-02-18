@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.0)
 set(project munch)
 
-find_package(noms REQUIRED COMPONENTS fruit veg)
+find_package(noms REQUIRED COMPONENTS fruit)
 
-add_executable(${project} src/main.cpp src/hooman.cpp)
+add_executable(${project} src/main.cpp)
 
 target_include_directories(${project}
   PUBLIC
@@ -13,7 +13,7 @@ target_include_directories(${project}
 
 target_link_libraries(${project}
   PUBLIC
-    noms::fruit noms::veg
+    noms::fruit
 )
 
 # ...

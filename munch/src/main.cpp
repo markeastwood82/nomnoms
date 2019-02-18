@@ -1,7 +1,9 @@
-#include "hooman.h"
+#include "noms/fruit/apple.h"
+#include <iostream>
 
 int main()
 {
-    Hooman me;
+    noms::Apple apple("red");
+    std::cout << "The apple is " << apple.getColour() << std::endl;
     return 0;
 }
