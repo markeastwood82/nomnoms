@@ -6,6 +6,9 @@ project(${project})
 add_subdirectory(fruit)
 add_subdirectory(veg)
 
+configure_file(
+  ${project}-config.cmake.in ${project}-config.cmake @ONLY)
+
 install(
-  FILES "${CMAKE_CURRENT_SOURCE_DIR}/${project}-config.cmake"
+  FILES "${CMAKE_BINARY_DIR}/${project}-config.cmake"
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${project})
