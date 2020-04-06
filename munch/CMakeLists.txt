@@ -1,19 +1,11 @@
 cmake_minimum_required(VERSION 3.0)
-set(project munch)
 
-find_package(noms REQUIRED COMPONENTS fruit)
+project(munch)
 
-add_executable(${project} src/main.cpp)
+find_package(noms REQUIRED CONFIG COMPONENTS veg fruit)
 
-target_include_directories(${project}
-  PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:$include>
-)
+add_executable(${PROJECT_NAME})
+target_sources(${PROJECT_NAME} PRIVATE src/main.cpp)
 
-target_link_libraries(${project}
-  PUBLIC
-    noms::fruit
-)
-
-# ...
+target_link_libraries(
+  ${PROJECT_NAME} PUBLIC noms::veg noms::fruit)
