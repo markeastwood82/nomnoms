@@ -1,0 +1,3 @@
+foreach(component ${@project@_FIND_COMPONENTS})
+    include(${CMAKE_CURRENT_LIST_DIR}/@project@-${component}-config.cmake)
+endforeach()

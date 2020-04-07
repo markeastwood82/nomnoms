@@ -9,4 +9,7 @@
 *.vs
 
 # anything build related
-*build*
+build/
+install/
+
+*.vscode
