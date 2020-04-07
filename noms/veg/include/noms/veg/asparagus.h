@@ -1,14 +1,14 @@
-#ifndef _APPLE_H
-#define _APPLE_H
+#ifndef _ASPARAGUS_H
+#define _ASPARAGUS_H
 
 #include <string>
 
 namespace noms
 {
-    class Apple
+    class Asparagus
     {
     public:
-        Apple(std::string colour);
+        Asparagus(std::string colour);
         std::string getColour() const;
 
     private:
@@ -16,4 +16,4 @@ namespace noms
     };
 } // namespace noms
 
-#endif /* _APPLE_H */
+#endif /* _ASPARAGUS_H */

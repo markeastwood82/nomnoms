@@ -1,13 +1,14 @@
 #include "noms/fruit/apple.h"
 
-namespace noms {
+namespace noms
+{
+    Apple::Apple(std::string colour)
+        : colour(std::move(colour))
+    {
+    }
 
-Apple::Apple(std::string colour) {
-    this->colour = colour;
-}
-
-std::string Apple::getColour() {
-    return colour;
-}
-
-}
+    std::string Apple::getColour() const
+    {
+        return colour;
+    }
+} // namespace noms

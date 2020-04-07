@@ -11,3 +11,5 @@
 # anything build related
 build/
 install/
+
+*.vscode
