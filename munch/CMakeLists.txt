@@ -1,19 +1,18 @@
-cmake_minimum_required(VERSION 3.0)
-set(project munch)
+cmake_minimum_required(VERSION 3.14...3.20)
+
+project(munch VERSION 1.0.0 LANGUAGES CXX)
 
 find_package(noms REQUIRED COMPONENTS fruit)
 
-add_executable(${project} src/main.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp)
 
-target_include_directories(${project}
-  PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:$include>
-)
-
-target_link_libraries(${project}
+target_link_libraries(${PROJECT_NAME}
   PUBLIC
     noms::fruit
 )
 
-# ...
+enable_testing()
+add_test(NAME munchTest COMMAND munch)
+
+# MAYBE:
+# install(${PROJECT_NAME} ...)

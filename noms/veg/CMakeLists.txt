@@ -1,12 +1,13 @@
 set(component veg)
 
-add_library(${component} SHARED src/asparagus.cpp)
+#XXX add_library(${component} PUBLIC src/asparagus.cpp)
+add_library(${component} INTERFACE)
 
 # namespaced alias
-add_library(${project}::${component} ALIAS ${component})
+add_library(${PROJECT_NAME}::${component} ALIAS ${component})
 
 target_include_directories(${component}
-  PUBLIC
+  INTERFACE #XXX PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
@@ -28,31 +29,31 @@ install(TARGETS ${component} EXPORT ${component}-targets
 )
 
 install(EXPORT ${component}-targets
-  FILE "${project}-${component}-targets.cmake"
-  NAMESPACE ${project}::
-  DESTINATION lib/cmake/${project}
+  FILE "${PROJECT_NAME}-${component}-targets.cmake"
+  NAMESPACE ${PROJECT_NAME}::
+  DESTINATION lib/cmake/${PROJECT_NAME}
   COMPONENT ${component}
 )
 
 # This seems like a kludge, but it does place the file in the correct location
 # on my machine (Ubuntu 18.04). Idea taken from Poco
 configure_file("${component}-config.cmake.in"
-  "${CMAKE_BINARY_DIR}/${project}-${component}-config.cmake"
+  "${CMAKE_BINARY_DIR}/${PROJECT_NAME}-${component}-config.cmake"
   @ONLY
 )
 
 include(CMakePackageConfigHelpers)
 write_basic_package_version_file(
-  "${CMAKE_BINARY_DIR}/${project}-${component}-config-version.cmake"
+  "${CMAKE_BINARY_DIR}/${PROJECT_NAME}-${component}-config-version.cmake"
   VERSION ${version}
   COMPATIBILITY AnyNewerVersion
 )
 
 install(
   FILES
-    "${CMAKE_BINARY_DIR}/${project}-${component}-config.cmake"
-    "${CMAKE_BINARY_DIR}/${project}-${component}-config-version.cmake"
-  DESTINATION lib/cmake/${project}
+    "${CMAKE_BINARY_DIR}/${PROJECT_NAME}-${component}-config.cmake"
+    "${CMAKE_BINARY_DIR}/${PROJECT_NAME}-${component}-config-version.cmake"
+  DESTINATION lib/cmake/${PROJECT_NAME}
   COMPONENT ${component}
 )
 
@@ -60,4 +61,6 @@ install(
   DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include
   COMPONENT ${component}
   DESTINATION ${CMAKE_INSTALL_PREFIX}
+  FILES_MATCHING
+  PATTERN "*.h"
 )

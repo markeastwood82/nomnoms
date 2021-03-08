@@ -8,12 +8,13 @@ namespace noms {
 class Apple
 {
 public:
-    Apple(std::string colour);
-    std::string getColour();
+    Apple(const std::string &colour);
+    std::string getColour() const;
+
 private:
-    std::string colour;
+    const std::string m_colour;
 };
 
-}
+} // namespace noms
 
 #endif /* _APPLE_H */
