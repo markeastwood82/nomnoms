@@ -41,7 +41,7 @@ jobs:
               echo IGNORED
 
       - name: Configure
-        run: cmake -S noms -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=${{ matrix.build }}
+        run: cmake -S noms -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=stage # -DBUILD_SHARED_LIBS=${{ matrix.build }}
 
       - name: Build
         run: cmake --build build --config Release -j 4
