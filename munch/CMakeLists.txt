@@ -11,6 +11,8 @@ target_link_libraries(${PROJECT_NAME}
     noms::fruit
 )
 
-# ...
 enable_testing()
 add_test(NAME munchTest COMMAND munch)
+
+# MAYBE:
+# install(${PROJECT_NAME} ...)

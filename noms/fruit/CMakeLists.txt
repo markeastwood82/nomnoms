@@ -1,6 +1,6 @@
 set(component fruit)
 
-add_library(${component} SHARED src/apple.cpp)
+add_library(${component} src/apple.cpp)
 
 # namespaced alias
 add_library(${PROJECT_NAME}::${component} ALIAS ${component})
