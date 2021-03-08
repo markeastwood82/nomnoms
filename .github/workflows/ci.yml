@@ -62,7 +62,8 @@ jobs:
         run: cmake --build build/test --config Release -j 4
 
       - name: TestInstalledVersion
-        run: cmake --build build/test --config Release --target test
+        working-directory: build/test
+        run: ctest -C Release --output-on-failure
 
       - name: Run clang-tidy on MacOS Host
         if: startsWith(matrix.os, 'macos')
