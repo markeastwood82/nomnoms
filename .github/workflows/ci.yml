@@ -41,7 +41,7 @@ jobs:
               echo IGNORED
 
       - name: Configure
-        run: cmake -S noms -B build -D CMAKE_BUILD_TYPE=Release -D BUILD_SHARED_LIBS=${{ matrix.build }}
+        run: cmake -S noms -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=${{ matrix.build }}
 
       - name: Build
         run: cmake --build build --config Release -j 4
@@ -56,7 +56,7 @@ jobs:
       - name: TestInstalledVersion
         shell: bash
         run: |
-          cmake -S examples -B build/test -D CMAKE_PREFIX_PATH=$PWD/stage -D CMAKE_EXPORT_COMPILE_COMMANDS=1
+          cmake -S examples -B build/test -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=$PWD/stage -DCMAKE_EXPORT_COMPILE_COMMANDS=1
           cmake --build build/test --config Release -j 4
           cmake --build build/test --config Release --target test
 
