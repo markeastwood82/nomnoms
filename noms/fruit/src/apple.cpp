@@ -2,12 +2,8 @@
 
 namespace noms {
 
-Apple::Apple(std::string colour) {
-    this->colour = colour;
-}
+Apple::Apple(const std::string &colour) : m_colour(colour) {}
 
-std::string Apple::getColour() {
-    return colour;
-}
+std::string Apple::getColour() const { return m_colour; }
 
-}
+} // namespace noms
