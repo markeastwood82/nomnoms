@@ -1,6 +1,6 @@
 @PACKAGE_INIT@
 
-if(@COMPONET_TARGETS_ENABLED@)
+if(@COMPONENT_TARGETS_ENABLED@)
   set(_supported_components fruit veg)
 
   foreach(_comp ${noms_FIND_COMPONENTS})
